@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Midnight Luxury Theme */
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Electric Cyan Primary */
+    --primary: 187 100% 50%;
+    --primary-foreground: 222 47% 5%;
+
+    /* Neon Purple Secondary */
+    --secondary: 270 100% 65%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 270 100% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 17%;
+    --ring: 187 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --cyan-glow: 187 100% 50%;
+    --purple-glow: 270 100% 65%;
+    --glass-bg: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-bg-hover: 0 0% 100% / 0.08;
+
+    /* Gradients */
+    --gradient-midnight: linear-gradient(135deg, hsl(222 47% 5%) 0%, hsl(222 47% 8%) 50%, hsl(230 40% 10%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.08) 0%, hsl(0 0% 100% / 0.02) 100%);
+    --gradient-cyan: linear-gradient(135deg, hsl(187 100% 50%) 0%, hsl(200 100% 60%) 100%);
+    --gradient-purple: linear-gradient(135deg, hsl(270 100% 65%) 0%, hsl(280 100% 70%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(222 47% 8%) 0%, hsl(222 47% 5%) 100%);
+    
+    /* Shadows */
+    --shadow-glow-cyan: 0 0 40px hsl(187 100% 50% / 0.3), 0 0 80px hsl(187 100% 50% / 0.1);
+    --shadow-glow-purple: 0 0 40px hsl(270 100% 65% / 0.3), 0 0 80px hsl(270 100% 65% / 0.1);
+    --shadow-card: 0 4px 30px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 8px 40px hsl(0 0% 0% / 0.4), 0 0 20px hsl(187 100% 50% / 0.15);
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--gradient-midnight);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply relative overflow-hidden rounded-xl;
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    background: hsl(var(--glass-bg-hover));
+    box-shadow: var(--shadow-card-hover);
+    transform: scale(1.02);
+  }
+
+  /* Glowing Button */
+  .btn-glow {
+    @apply relative px-8 py-4 rounded-xl font-semibold text-primary-foreground transition-all duration-300;
+    background: var(--gradient-cyan);
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 60px hsl(187 100% 50% / 0.5), 0 0 100px hsl(187 100% 50% / 0.2);
+  }
+
+  .btn-glow-purple {
+    background: var(--gradient-purple);
+    box-shadow: var(--shadow-glow-purple);
+  }
+
+  .btn-glow-purple:hover {
+    box-shadow: 0 0 60px hsl(270 100% 65% / 0.5), 0 0 100px hsl(270 100% 65% / 0.2);
+  }
+
+  /* Text Gradient */
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-cyan);
+  }
+
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-purple);
+  }
+
+  /* Input Glass Style */
+  .input-glass {
+    @apply w-full px-4 py-3 rounded-lg text-foreground placeholder:text-muted-foreground transition-all duration-200;
+    background: hsl(var(--glass-bg));
+    border: 1px solid hsl(var(--glass-border));
+    backdrop-filter: blur(8px);
+  }
+
+  .input-glass:focus {
+    @apply outline-none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 20px hsl(187 100% 50% / 0.2);
+  }
+
+  /* Chip/Tag Style */
+  .chip {
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer;
+    background: hsl(var(--glass-bg));
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .chip:hover {
+    background: hsl(var(--glass-bg-hover));
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  .chip-active {
+    @apply chip;
+    background: hsl(var(--primary) / 0.2);
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+  }
+
+  /* Cost Pill */
+  .cost-pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+    background: hsl(var(--primary) / 0.15);
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply relative overflow-hidden rounded-lg;
+    background: hsl(var(--muted));
+  }
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(0 0% 100% / 0.05),
+      transparent
+    );
+    animation: skeleton-shimmer 1.5s infinite;
+  }
+
+  @keyframes skeleton-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Budget Health Indicator */
+  .budget-healthy {
+    @apply text-emerald-400;
+  }
+
+  .budget-warning {
+    @apply text-amber-400;
+  }
+
+  .budget-danger {
+    @apply text-red-400;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}

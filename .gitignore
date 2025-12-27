@@ -1,0 +1,66 @@
+# ===========================
+# 1. SECURITY (Crucial)
+# ===========================
+# Never upload API keys or secrets!
+.env
+.env.local
+backend/.env
+frontend/.env
+
+# ===========================
+# 2. SYSTEM FILES
+# ===========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===========================
+# 3. PYTHON BACKEND
+# ===========================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments (Ignore all common names)
+venv/
+.venv/
+env/
+travel_agent_env/
+
+# Distribution / Packaging
+*.egg-info/
+.eggs/
+
+# Logs and Databases
+*.log
+*.sqlite
+*.db
+backend/database/*.json  # Ignores JSON "database" files if you use them for storage
+
+# ===========================
+# 4. REACT FRONTEND (Node.js)
+# ===========================
+# Dependencies (Heavy folders)
+node_modules/
+.npm/
+
+# Build Outputs (The "dist" folder Vite creates)
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Framework specifics
+.vercel/
+.next/
+out/
+
+# Note: Keep package-lock.json and bun.lockb! 
+# (Professional teams commit lockfiles to ensure versions match)

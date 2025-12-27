@@ -1,0 +1,8 @@
+langchain==1.1.3
+langchain-openai
+langchain-community
+pydantic
+geopy
+wikipedia
+duckduckgo-search
+python-dotenv
