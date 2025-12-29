@@ -1,6 +1,14 @@
+# --- Web Server (CRITICAL: Fixes "executable file not found") ---
+fastapi
+uvicorn[standard]
+
+# --- AI & LLMs ---
 langchain==1.1.3
-langchain-openai
 langchain-community
+langchain-openai
+langchain-groq
+
+# --- Tools & Data ---
 pydantic
 geopy
 wikipedia
