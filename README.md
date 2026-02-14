@@ -2,6 +2,7 @@
 
 **A Next-Gen Intelligent Trip Planner**
 
+[![Live Demo](https://img.shields.io/badge/Live_Site-Visit_Now-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ai-travel-agent-snowy.vercel.app)
 ![Project Status](https://img.shields.io/badge/Status-Active-success)
 ![Tech Stack](https://img.shields.io/badge/Stack-Full%20Stack-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -57,3 +58,13 @@ Follow these steps to run the project locally.
 ```bash
 git clone [https://github.com/YOUR_USERNAME/ai-travel-agent.git](https://github.com/YOUR_USERNAME/ai-travel-agent.git)
 cd ai-travel-agent
+```
+### Deployment
+- Frontend
+```bash
+https://ai-travel-agent-snowy.vercel.app
+```
+- Backend
+```bash
+https://najbfubajbefjj2jj4-travel-trip-backend.hf.space/
+```
