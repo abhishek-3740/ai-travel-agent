@@ -1,7 +1,19 @@
+import os
 from langchain.tools import tool
 from langchain_community.utilities import WikipediaAPIWrapper
-from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_google_community import GoogleSearchAPIWrapper
 from geopy.geocoders import Nominatim
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Initialize Google Search Wrapper once to be reused by tools
+# It will use the keys from your .env file
+search = GoogleSearchAPIWrapper(
+    google_api_key=os.getenv("GOOGLE_API_KEY"),
+    google_cse_id=os.getenv("GOOGLE_CX_ID")
+)
 
 @tool
 def map_search_tool(location_name: str) -> str:
@@ -30,19 +42,19 @@ def web_search_tool(query: str) -> str:
     """
     Search the web for current 'best of' lists, events, or general info.
     """
-    return DuckDuckGoSearchRun().run(query)
-
-
-search = DuckDuckGoSearchRun()
+    try:
+        return search.run(query)
+    except Exception as e:
+        return f"Web Search Error: {e}"
 
 @tool
 def check_price_tool(activity_name: str) -> str:
     """
-    Searches the web for the current ticket price or cost of an activity in 2025.
+    Searches the web for the current ticket price or cost of an activity in 2026.
     Useful for estimating budgets.
     """
-    
-    query = f"current ticket price cost {activity_name} 2025"
+    # Updated to 2026 to match current time
+    query = f"current ticket price cost {activity_name} 2026"
     
     try:
         results = search.run(query)
