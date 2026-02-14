@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Literal
+from typing import List, Literal, Optional
 
 # --- Input Schema ---
 class UserProfile(BaseModel):
@@ -9,8 +9,11 @@ class UserProfile(BaseModel):
     pacing: Literal["Relaxed", "Moderate", "Fast-paced"] = Field("Moderate", description="Trip speed")
     interests: List[str] = Field(default_factory=list, description="Specific interests")
     group_size: int = Field(1, description="Number of travelers")
+    
+    # 👇 THIS IS THE CRITICAL LINE YOU WERE MISSING 👇
+    user_email: Optional[str] = Field("guest@example.com", description="User email for DB storage")
 
-# --- Output Schema ---
+# --- Output Schema (Keep this the same) ---
 class Activity(BaseModel):
     name: str = Field(..., description="Name of the location")
     description: str = Field(..., description="Brief description")
